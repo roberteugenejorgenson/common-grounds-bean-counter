@@ -1,0 +1,33 @@
+week_of,location,drinks_sold,revenue,loyalty_signups,bags_sold,notes
+2026-06-29,Downtown,1520,3720,12,36,
+2026-06-29,Uptown,1410,3540,9,31,farmers market weekend
+2026-06-29,Design District,1340,3410,8,28,
+2026-06-29,Bishop Arts,1290,3250,7,26,
+2026-07-06,Downtown,1560,3790,13,38,holiday week crowd
+2026-07-06,Uptown,1455,3610,10,33,
+2026-07-06,Design District,1325,3380,7,27,
+2026-07-06,Bishop Arts,1315,3310,8,27,patio open all week
+2026-07-13,Downtown,1540,3750,11,35,
+2026-07-13,Uptown,1430,3580,9,32,cold brew promo
+2026-07-13,Bishop Arts,1300,3280,6,26,
+2026-07-20,Downtown,1580,3800,14,39,best pour-over week yet
+2026-07-20,Uptown,1470,3650,11,34,
+2026-07-20,Design District,1365,3470,9,29,
+2026-07-20,Bishop Arts,1335,3360,8,28,art walk Saturday
+2026-07-27,Downtown,1545,3760,12,37,
+2026-07-27,Uptown,1400,3520,,30,shift lead on vacation
+2026-07-27,Design District,1310,3340,7,27,
+2026-07-27,Bishop Arts,1285,3230,7,25,
+2026-08-03,Downtown,1340,3180,10,31,espresso machine down two days
+2026-08-03,Uptown,1215,2880,8,26,
+2026-08-03,Design District,1120,2650,6,22,slow start to the month
+2026-08-03,Bishop Arts,1050,2480,5,20,
+2026-08-10,Downtown,1310,3120,9,30,
+2026-08-10,Uptown,1240,2940,8,27,college move-in week
+2026-08-10,Design District,1145,2710,6,23,
+2026-08-10,Bishop Arts,1025,2420,5,19,
+2026-08-17,Downtown,1285,3050,9,29,
+2026-08-17,Uptown,1190,2820,7,25,
+2026-08-17,Design District,1090,2580,5,21,"AC repair, closed Monday morning"
+2026-08-17,Bishop Arts,330,780,2,6,
+2026-08-17,bishop arts,675,1600,4,13,resubmitted totals
