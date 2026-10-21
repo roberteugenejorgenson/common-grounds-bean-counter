@@ -112,14 +112,15 @@ export default function HomePage() {
         body: JSON.stringify(form),
       });
       if (!response.ok) {
-        throw new Error("Request failed with status " + response.status);
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "The entry could not be saved. Please check the fields and try again.");
       }
       setForm(emptyForm);
       loadSummary();
       loadEntries();
     } catch (error) {
       console.error("Could not save the entry:", error);
-      setFormError(SUBMIT_ERROR);
+      setFormError(error.message || SUBMIT_ERROR);
     }
   }
 
