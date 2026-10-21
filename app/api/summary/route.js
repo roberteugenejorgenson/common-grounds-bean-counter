@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { readEntries } from "../../../lib/entries";
+import { readStoredEntries } from "../../../lib/data-store";
 
 export const dynamic = "force-dynamic";
 const MONTHLY_REVENUE_GOAL = 50000;
 
 export async function GET() {
   try {
-    const entries = await readEntries();
+    const entries = await readStoredEntries();
     if (!entries.length) return NextResponse.json({ drinks_latest_week: 0, revenue_latest_week: 0, goal_progress_pct: 0, by_location: [] });
     const latestWeek = entries.reduce((latest, entry) => entry.week_of > latest ? entry.week_of : latest, "");
     const latest = entries.filter((entry) => entry.week_of === latestWeek);
@@ -19,7 +19,7 @@ export async function GET() {
       goal_progress_pct: Math.round((monthlyRevenue / MONTHLY_REVENUE_GOAL) * 100),
       by_location,
     });
-  } catch {
-    return NextResponse.json({ error: "Could not calculate summary." }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message || "Could not calculate summary." }, { status: 500 });
   }
 }

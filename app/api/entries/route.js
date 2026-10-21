@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { appendEntry, readEntries } from "../../../lib/entries";
+import { readStoredEntries, saveStoredEntry } from "../../../lib/data-store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,11 +8,11 @@ const NUMERIC_FIELDS = ["drinks_sold", "revenue", "loyalty_signups", "bags_sold"
 
 export async function GET() {
   try {
-    const entries = await readEntries();
+    const entries = await readStoredEntries();
     entries.sort((a, b) => b.week_of.localeCompare(a.week_of) || a.location.localeCompare(b.location));
     return NextResponse.json({ entries });
-  } catch {
-    return NextResponse.json({ error: "Could not read entries." }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message || "Could not read entries." }, { status: 500 });
   }
 }
 
@@ -62,9 +62,9 @@ export async function POST(request) {
   }
   const entry = { week_of: week, location, ...values, notes: (body.notes ?? "").trim() };
   try {
-    await appendEntry(entry);
-    return NextResponse.json({ entry }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: "Could not save the entry." }, { status: 500 });
+    const savedEntry = await saveStoredEntry(entry);
+    return NextResponse.json({ entry: savedEntry ? { ...savedEntry, id: savedEntry.id ?? `${entry.week_of}-${entry.location}` } : entry }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message || "Could not save the entry." }, { status: 500 });
   }
 }
